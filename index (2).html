@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PK News | Pakistan Politics, Updated Every Hour</title>
+<meta name="description" content="PK News brings you the latest Pakistan political headlines from trusted sources, refreshed every hour.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,700;6..72,800&display=swap" rel="stylesheet">
+<style>
+:root{--pine:#0e3b2e;--pine2:#165a45;--red:#d62839;--bg:#f5f7f6;--card:#fff;--text:#16201c;--muted:#5d6b65;--line:#dde5e1;--mint:#e3efe8;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0a110e;--card:#111a16;--text:#ecf2ef;--muted:#92a39b;--line:#22302a;--mint:#16251f}}
+:root[data-theme=dark]{--bg:#0a110e;--card:#111a16;--text:#ecf2ef;--muted:#92a39b;--line:#22302a;--mint:#16251f}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+
+.status{background:var(--pine);color:#cfe3d9;font-size:.78rem}
+.status .wrap{display:flex;justify-content:space-between;gap:12px;padding-top:7px;padding-bottom:7px;flex-wrap:wrap}
+.live{display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(214,40,57,.7);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 7px rgba(214,40,57,0)}100%{box-shadow:0 0 0 0 rgba(214,40,57,0)}}
+
+.mast{background:var(--card);border-bottom:1px solid var(--line)}
+.mast .wrap{display:flex;align-items:center;gap:16px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
+.logo{display:flex;align-items:stretch;line-height:1}
+.logo b{background:var(--pine);color:#fff;font-family:var(--serif);font-weight:800;font-size:2rem;padding:8px 12px 10px;letter-spacing:-1px;border-radius:6px 0 0 6px}
+.logo i{font-family:var(--serif);font-style:normal;font-weight:700;font-size:2rem;padding:8px 12px 10px;border:2px solid var(--pine);border-left:0;border-radius:0 6px 6px 0;color:var(--text)}
+.tag{color:var(--muted);font-size:.9rem;max-width:230px}
+.tools{margin-left:auto;display:flex;gap:8px;flex:1;justify-content:flex-end;min-width:230px}
+input[type=search]{flex:1;max-width:280px;padding:10px 16px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);font:inherit;font-size:.92rem}
+.btn{cursor:pointer;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:8px;padding:9px 14px;font:inherit;font-size:.88rem;font-weight:500}
+.btn:hover{border-color:var(--pine2)}
+
+nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:15}
+nav .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav button{white-space:nowrap;background:none;border:0;border-bottom:3px solid transparent;color:var(--muted);font:inherit;font-weight:600;font-size:.92rem;padding:13px 14px;cursor:pointer}
+nav button:hover{color:var(--text)}
+nav button.on{color:var(--pine);border-color:var(--red)}
+:root[data-theme=dark] nav button.on{color:#7fd1ab}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) nav button.on{color:#7fd1ab}}
+
+main{padding:26px 0 50px}
+.top{display:grid;grid-template-columns:1.75fr 1fr;gap:22px;align-items:start}
+.lead{position:relative;display:block;border-radius:10px;overflow:hidden;min-height:430px;background:linear-gradient(140deg,var(--pine2),var(--pine));background-size:cover;background-position:center;color:#fff}
+.lead::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(5,20,15,.92) 8%,rgba(5,20,15,.35) 55%,rgba(5,20,15,.1))}
+.lead .in{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:26px}
+.chip{display:inline-block;background:var(--red);color:#fff;font-weight:600;font-size:.78rem;padding:3px 10px;border-radius:4px;margin-bottom:12px}
+.lead h1{font-family:var(--serif);font-weight:800;font-size:2.15rem;line-height:1.14;letter-spacing:-.4px;margin-bottom:10px}
+.lead p{color:#d4e2db;font-size:1rem;max-width:62ch;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.m{display:flex;gap:14px;align-items:center;font-size:.8rem;margin-top:12px;color:var(--muted)}
+.m b{color:var(--text);font-weight:600}
+.lead .m,.lead .m b{color:#e8f1ed}
+
+.rail{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 18px 4px}
+.rail h3{font-family:var(--serif);font-size:1.2rem;padding:14px 0 10px;border-bottom:2px solid var(--pine)}
+.ri{display:grid;grid-template-columns:52px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.ri:last-child{border:0}
+.ri time{font-weight:700;font-size:.82rem;color:var(--red);padding-top:3px}
+.ri h4{font-family:var(--serif);font-size:1.02rem;line-height:1.3;font-weight:700}
+.ri:hover h4,.row:hover h3{color:var(--pine2);text-decoration:underline;text-underline-offset:3px}
+.ri span{display:block;font-size:.78rem;color:var(--muted);margin-top:3px}
+
+.sec{font-family:var(--serif);font-size:1.5rem;margin:38px 0 4px;padding-bottom:10px;border-bottom:2px solid var(--pine)}
+.row{display:grid;grid-template-columns:1fr 220px;gap:22px;padding:22px 0;border-bottom:1px solid var(--line);align-items:center}
+.row.nt{grid-template-columns:1fr}
+.cat{font-size:.8rem;font-weight:700;color:var(--red)}
+.row h3{font-family:var(--serif);font-size:1.4rem;line-height:1.22;font-weight:700;margin:3px 0 7px}
+.row p{color:var(--muted);font-size:.95rem;max-width:68ch;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.th{aspect-ratio:3/2;border-radius:8px;background:linear-gradient(140deg,var(--pine2),var(--pine));background-size:cover;background-position:center}
+
+.sk{height:430px;border-radius:10px;background:linear-gradient(90deg,var(--card) 25%,var(--line) 50%,var(--card) 75%);background-size:200% 100%;animation:sh 1.3s infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.msg{text-align:center;color:var(--muted);padding:60px 0}
+.banner{background:var(--mint);border-left:4px solid var(--pine2);padding:10px 14px;border-radius:6px;font-size:.88rem;margin-bottom:18px}
+footer{background:var(--pine);color:#b9d1c6;padding:26px 0;font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer b{color:#fff;font-family:var(--serif);font-size:1.1rem}
+
+@media(max-width:900px){.top{grid-template-columns:1fr}.lead{min-height:360px}.lead h1{font-size:1.6rem}.tag{display:none}.tools{flex-basis:100%;margin:0}input[type=search]{max-width:none}}
+@media(max-width:560px){.row{grid-template-columns:1fr 104px;gap:14px}.row h3{font-size:1.12rem}.row p{-webkit-line-clamp:2;font-size:.88rem}.lead .in{padding:18px}.lead h1{font-size:1.35rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="status"><div class="wrap">
+  <span id="date"></span>
+  <span class="live"><i class="dot"></i><span id="upd">Loading…</span></span>
+</div></div>
+
+<header class="mast"><div class="wrap">
+  <a class="logo" href="/" aria-label="PK News home"><b>PK</b><i>News</i></a>
+  <p class="tag">Pakistan politics from trusted sources, refreshed every hour.</p>
+  <div class="tools">
+    <input type="search" id="q" placeholder="Search headlines" aria-label="Search headlines">
+    <button class="btn" id="theme" aria-label="Switch light or dark theme">Theme</button>
+    <button class="btn" id="ref" aria-label="Refresh news">Refresh</button>
+  </div>
+</div></header>
+<nav aria-label="Categories"><div class="wrap" id="cats"></div></nav>
+
+<main class="wrap">
+  <div id="note"></div>
+  <div id="out"></div>
+</main>
+
+<footer><div class="wrap">
+  <div><b>PK News</b><br>Headlines and images belong to their original publishers.</div>
+  <div id="yr"></div>
+</div></footer>
+
+<script>
+const CONFIG = {
+  URL: "https://muiology.app.n8n.cloud/webhook/24e06f3c-53e6-4f60-b463-8cdf4769e95a",
+  EVERY: 60 * 60 * 1000
+};
+const DEMO = {updatedAt:new Date().toISOString(),articles:[
+ {title:"Federal cabinet approves new economic reform package",description:"Ministers reviewed revenue targets and relief measures during the latest cabinet session in Islamabad.",url:"#",image:"",source:"Sample Source",publishedAt:new Date().toISOString(),category:"Government"},
+ {title:"National Assembly to take up key legislation this week",description:"Lawmakers are expected to debate several bills, with the opposition planning to raise concerns.",url:"#",image:"",source:"Sample Source",publishedAt:new Date(Date.now()-3.6e6).toISOString(),category:"Parliament"},
+ {title:"Opposition parties announce joint strategy",description:"Party leaders met to finalise their approach ahead of the next session.",url:"#",image:"",source:"Sample Source",publishedAt:new Date(Date.now()-7.2e6).toISOString(),category:"Opposition"},
+ {title:"Supreme Court hears constitutional petition",description:"A larger bench is reviewing arguments from both sides in the ongoing case.",url:"#",image:"",source:"Sample Source",publishedAt:new Date(Date.now()-1e7).toISOString(),category:"Courts"},
+ {title:"Foreign Office outlines position on regional diplomacy",description:"Officials spoke about bilateral talks at the weekly press briefing.",url:"#",image:"",source:"Sample Source",publishedAt:new Date(Date.now()-1.4e7).toISOString(),category:"Foreign Policy"},
+ {title:"Provincial government unveils development plan",description:"The plan focuses on roads, schools and public services over the next two years.",url:"#",image:"",source:"Sample Source",publishedAt:new Date(Date.now()-2e7).toISOString(),category:"Government"},
+ {title:"Senate committee reviews budget proposals",description:"Members questioned officials on spending priorities and revenue forecasts.",url:"#",image:"",source:"Sample Source",publishedAt:new Date(Date.now()-3e7).toISOString(),category:"Parliament"}
+]};
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const url = u => /^https?:\/\//i.test(u) ? u : "#";
+const bg = i => i ? `style="background-image:url('${esc(url(i))}')"` : "";
+let all = [], cat = "All", term = "", nextAt = Date.now() + CONFIG.EVERY, stamp = "";
+
+function ago(iso){
+  const m = Math.max(0, (Date.now() - new Date(iso)) / 60000);
+  if (isNaN(m)) return "";
+  if (m < 60) return Math.max(1, Math.round(m)) + " min ago";
+  if (m < 1440) return Math.round(m/60) + " hr ago";
+  return Math.round(m/1440) + " days ago";
+}
+const clock = iso => { const d = new Date(iso); return isNaN(d) ? "" : d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}); };
+
+function meta(a){ return `<div class="m"><b>${esc(a.source || "Unknown source")}</b><span>${ago(a.publishedAt)}</span></div>`; }
+
+function row(a){
+  const th = a.image ? `<div class="th" ${bg(a.image)}></div>` : "";
+  return `<a class="row ${a.image?"":"nt"}" href="${esc(url(a.url))}" target="_blank" rel="noopener noreferrer">
+    <div><span class="cat">${esc(a.category || "Politics")}</span><h3>${esc(a.title)}</h3>
+    <p>${esc(a.description)}</p>${meta(a)}</div>${th}</a>`;
+}
+
+function render(){
+  const list = all.filter(a => (cat==="All" || a.category===cat) &&
+    (!term || (a.title+" "+(a.description||"")+" "+(a.source||"")).toLowerCase().includes(term)));
+  if (!list.length){ $("#out").innerHTML = '<div class="msg">No headlines match. Try another word or category.</div>'; return; }
+  const lead = list[0], rail = list.slice(1,6), rows = list.slice(6);
+  $("#out").innerHTML = `
+  <section class="top">
+    <a class="lead" ${bg(lead.image)} href="${esc(url(lead.url))}" target="_blank" rel="noopener noreferrer">
+      <div class="in"><span class="chip">${esc(lead.category || "Politics")}</span>
+      <h1>${esc(lead.title)}</h1><p>${esc(lead.description)}</p>${meta(lead)}</div></a>
+    <aside class="rail"><h3>Latest headlines</h3>
+      ${rail.map(a => `<a class="ri" href="${esc(url(a.url))}" target="_blank" rel="noopener noreferrer"><time>${clock(a.publishedAt)}</time><div><h4>${esc(a.title)}</h4><span>${esc(a.source)}</span></div></a>`).join("") || '<p class="msg">No more stories.</p>'}
+    </aside>
+  </section>
+  ${rows.length ? `<h2 class="sec">More stories</h2><section>${rows.map(row).join("")}</section>` : ""}`;
+}
+
+function cats(){
+  const c = ["All", ...new Set(all.map(a => a.category).filter(Boolean))];
+  $("#cats").innerHTML = c.map(x => `<button data-c="${esc(x)}" class="${x===cat?"on":""}">${esc(x)}</button>`).join("");
+}
+
+function status(){
+  const left = Math.max(0, Math.round((nextAt - Date.now()) / 60000));
+  $("#upd").textContent = stamp + " Next update in " + left + " min";
+}
+
+async function load(){
+  try{
+    if (CONFIG.URL.includes("YOUR-N8N-DOMAIN")) throw 0;
+    const r = await fetch(CONFIG.URL, {cache:"no-store"});
+    if (!r.ok) throw 0;
+    const d = await r.json();
+    if (!d.articles || !d.articles.length) throw 0;
+    all = d.articles; $("#note").innerHTML = "";
+    stamp = "Updated " + ago(d.updatedAt) + ".";
+    try{ localStorage.setItem("pknews", JSON.stringify(d)); }catch(_){}
+  }catch(e){
+    let c = null; try{ c = JSON.parse(localStorage.getItem("pknews")); }catch(_){}
+    all = (c || DEMO).articles;
+    $("#note").innerHTML = '<div class="banner">' + (c ? "Live feed is unavailable right now. Showing the last saved headlines." : "Showing sample stories. The live feed has no data yet; open the n8n refresh link once, then reload.") + "</div>";
+    stamp = c ? "Offline copy." : "Sample mode.";
+  }
+  nextAt = Date.now() + CONFIG.EVERY;
+  cats(); render(); status();
+}
+
+$("#out").innerHTML = '<div class="top"><div class="sk"></div><div class="sk"></div></div>';
+$("#cats").addEventListener("click", e => { const b = e.target.closest("button"); if(!b) return; cat = b.dataset.c; cats(); render(); });
+$("#q").addEventListener("input", e => { term = e.target.value.trim().toLowerCase(); render(); });
+$("#ref").onclick = load;
+$("#theme").onclick = () => { const r = document.documentElement; const dark = r.dataset.theme==="dark" || (!r.dataset.theme && matchMedia("(prefers-color-scheme:dark)").matches); r.dataset.theme = dark ? "light" : "dark"; };
+$("#date").textContent = new Date().toLocaleDateString("en-GB", {weekday:"long", day:"numeric", month:"long", year:"numeric"});
+$("#yr").textContent = "© " + new Date().getFullYear() + " PK News";
+
+load();
+setInterval(load, CONFIG.EVERY);
+setInterval(status, 30000);
+document.addEventListener("visibilitychange", () => { if (!document.hidden && Date.now() >= nextAt) load(); });
+</script>
+</body>
+</html>
